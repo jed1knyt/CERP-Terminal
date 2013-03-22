@@ -1,0 +1,1844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cerp.com.ph/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://cerp.com.ph/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cerp.com.ph/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_emp_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemIDCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_bar_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemIDCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemIDCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_bar_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemFullDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_bar_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemFullDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemFullDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_bar_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasInventoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasDuplicateWarehouseInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_invoice_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lot_no" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasDuplicateWarehouseInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasDuplicateWarehouseInventoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaterials">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMaterialsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMaterialsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWarehouseInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWarehouseInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWarehouseInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlanQty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlanQtyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPlanQtyResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdjustWarehouseInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_prod_lot_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_mat_lot_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_device_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_status" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_qty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="_remarks" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_destination_terminal_id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdjustWarehouseInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdjustWarehouseInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWarehouseInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_invoice_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lot_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_device_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_status" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_qty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="_remarks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWarehouseInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateWarehouseInventoryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsProdRequestPartial">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsProdRequestPartialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsProdRequestPartialResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWarehouseMatLotQty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_mat_lot" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWarehouseMatLotQtyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWarehouseMatLotQtyResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWarehouseRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_qty" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWarehouseRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateWarehouseRequestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProductionInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_prod_lot_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lot_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_src_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_device_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_status" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_qty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="_remarks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProductionInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddProductionInventoryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentProductionQuantity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_prod_lot_no" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentProductionQuantityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCurrentProductionQuantityResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveIfZeroQty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_prod_lot_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_mat_lot_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_qty" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveIfZeroQtyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveIfZeroQtyResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdjustProductionInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_prod_lot_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_mat_lot_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_src_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_device_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_status" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_qty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="_remarks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdjustProductionInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdjustProductionInventoryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProductionInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_item_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_item_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_tracking_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_prod_lot_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lot_no" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_src_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_terminal_device_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_status" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_qty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="_remarks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProductionInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateProductionInventoryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="test">
+        <s:complexType />
+      </s:element>
+      <s:element name="testResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="decimal" type="s:decimal" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemIDCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemIDCode" />
+  </wsdl:message>
+  <wsdl:message name="GetItemIDCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemIDCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemFullDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemFullDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetItemFullDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemFullDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HasInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:HasInventory" />
+  </wsdl:message>
+  <wsdl:message name="HasInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:HasInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HasDuplicateWarehouseInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:HasDuplicateWarehouseInventory" />
+  </wsdl:message>
+  <wsdl:message name="HasDuplicateWarehouseInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:HasDuplicateWarehouseInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMaterials" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMaterialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetWarehouseInventory" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetWarehouseInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlanQtySoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlanQty" />
+  </wsdl:message>
+  <wsdl:message name="GetPlanQtySoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlanQtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWarehouseInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:AdjustWarehouseInventory" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWarehouseInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:AdjustWarehouseInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWarehouseInventory" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWarehouseInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsProdRequestPartialSoapIn">
+    <wsdl:part name="parameters" element="tns:IsProdRequestPartial" />
+  </wsdl:message>
+  <wsdl:message name="IsProdRequestPartialSoapOut">
+    <wsdl:part name="parameters" element="tns:IsProdRequestPartialResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseMatLotQtySoapIn">
+    <wsdl:part name="parameters" element="tns:GetWarehouseMatLotQty" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseMatLotQtySoapOut">
+    <wsdl:part name="parameters" element="tns:GetWarehouseMatLotQtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWarehouseRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWarehouseRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddProductionInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddProductionInventory" />
+  </wsdl:message>
+  <wsdl:message name="AddProductionInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddProductionInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentProductionQuantitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentProductionQuantity" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentProductionQuantitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentProductionQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveIfZeroQtySoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveIfZeroQty" />
+  </wsdl:message>
+  <wsdl:message name="RemoveIfZeroQtySoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveIfZeroQtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdjustProductionInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:AdjustProductionInventory" />
+  </wsdl:message>
+  <wsdl:message name="AdjustProductionInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:AdjustProductionInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProductionInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProductionInventory" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProductionInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProductionInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="testSoapIn">
+    <wsdl:part name="parameters" element="tns:test" />
+  </wsdl:message>
+  <wsdl:message name="testSoapOut">
+    <wsdl:part name="parameters" element="tns:testResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetIn">
+    <wsdl:part name="_emp_id" type="s:string" />
+    <wsdl:part name="_pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemIDCodeHttpGetIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemIDCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsHttpGetIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemFullDetailsHttpGetIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemFullDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HasInventoryHttpGetIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HasInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="HasDuplicateWarehouseInventoryHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_invoice_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HasDuplicateWarehouseInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialsHttpGetIn" />
+  <wsdl:message name="GetMaterialsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseInventoryHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPlanQtyHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPlanQtyHttpGetOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWarehouseInventoryHttpGetIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_mat_lot_no" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+    <wsdl:part name="_destination_terminal_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWarehouseInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseInventoryHttpGetIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_invoice_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="IsProdRequestPartialHttpGetIn" />
+  <wsdl:message name="IsProdRequestPartialHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseMatLotQtyHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_mat_lot" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseMatLotQtyHttpGetOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseRequestHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseRequestHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AddProductionInventoryHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+    <wsdl:part name="_src_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddProductionInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentProductionQuantityHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentProductionQuantityHttpGetOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="RemoveIfZeroQtyHttpGetIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_mat_lot_no" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveIfZeroQtyHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AdjustProductionInventoryHttpGetIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_mat_lot_no" type="s:string" />
+    <wsdl:part name="_src_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdjustProductionInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProductionInventoryHttpGetIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+    <wsdl:part name="_src_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProductionInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="testHttpGetIn" />
+  <wsdl:message name="testHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="_emp_id" type="s:string" />
+    <wsdl:part name="_pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemIDCodeHttpPostIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemIDCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsHttpPostIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemFullDetailsHttpPostIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemFullDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HasInventoryHttpPostIn">
+    <wsdl:part name="_bar_code" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HasInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="HasDuplicateWarehouseInventoryHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_invoice_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HasDuplicateWarehouseInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialsHttpPostIn" />
+  <wsdl:message name="GetMaterialsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseInventoryHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPlanQtyHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPlanQtyHttpPostOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWarehouseInventoryHttpPostIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_mat_lot_no" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+    <wsdl:part name="_destination_terminal_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWarehouseInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseInventoryHttpPostIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_invoice_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="IsProdRequestPartialHttpPostIn" />
+  <wsdl:message name="IsProdRequestPartialHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseMatLotQtyHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_mat_lot" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWarehouseMatLotQtyHttpPostOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseRequestHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWarehouseRequestHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AddProductionInventoryHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+    <wsdl:part name="_src_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddProductionInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentProductionQuantityHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentProductionQuantityHttpPostOut">
+    <wsdl:part name="Body" element="tns:decimal" />
+  </wsdl:message>
+  <wsdl:message name="RemoveIfZeroQtyHttpPostIn">
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_mat_lot_no" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveIfZeroQtyHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AdjustProductionInventoryHttpPostIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_mat_lot_no" type="s:string" />
+    <wsdl:part name="_src_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdjustProductionInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProductionInventoryHttpPostIn">
+    <wsdl:part name="_type" type="s:string" />
+    <wsdl:part name="_item_id" type="s:string" />
+    <wsdl:part name="_item_type" type="s:string" />
+    <wsdl:part name="_tracking_no" type="s:string" />
+    <wsdl:part name="_prod_lot_no" type="s:string" />
+    <wsdl:part name="_lot_no" type="s:string" />
+    <wsdl:part name="_src_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_id" type="s:string" />
+    <wsdl:part name="_terminal_device_id" type="s:string" />
+    <wsdl:part name="_status" type="s:string" />
+    <wsdl:part name="_qty" type="s:string" />
+    <wsdl:part name="_remarks" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProductionInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="testHttpPostIn" />
+  <wsdl:message name="testHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <wsdl:input message="tns:GetItemIDCodeSoapIn" />
+      <wsdl:output message="tns:GetItemIDCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <wsdl:input message="tns:GetItemDetailsSoapIn" />
+      <wsdl:output message="tns:GetItemDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <wsdl:input message="tns:GetItemFullDetailsSoapIn" />
+      <wsdl:output message="tns:GetItemFullDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <wsdl:input message="tns:HasInventorySoapIn" />
+      <wsdl:output message="tns:HasInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <wsdl:input message="tns:HasDuplicateWarehouseInventorySoapIn" />
+      <wsdl:output message="tns:HasDuplicateWarehouseInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <wsdl:input message="tns:GetMaterialsSoapIn" />
+      <wsdl:output message="tns:GetMaterialsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets current and total warehouse quantity of item</wsdl:documentation>
+      <wsdl:input message="tns:GetWarehouseInventorySoapIn" />
+      <wsdl:output message="tns:GetWarehouseInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <wsdl:input message="tns:GetPlanQtySoapIn" />
+      <wsdl:output message="tns:GetPlanQtySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <wsdl:input message="tns:AdjustWarehouseInventorySoapIn" />
+      <wsdl:output message="tns:AdjustWarehouseInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <wsdl:input message="tns:UpdateWarehouseInventorySoapIn" />
+      <wsdl:output message="tns:UpdateWarehouseInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <wsdl:input message="tns:IsProdRequestPartialSoapIn" />
+      <wsdl:output message="tns:IsProdRequestPartialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets item qty based on material number</wsdl:documentation>
+      <wsdl:input message="tns:GetWarehouseMatLotQtySoapIn" />
+      <wsdl:output message="tns:GetWarehouseMatLotQtySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates Production Request from PENDING to ENROUTE</wsdl:documentation>
+      <wsdl:input message="tns:UpdateWarehouseRequestSoapIn" />
+      <wsdl:output message="tns:UpdateWarehouseRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <wsdl:input message="tns:AddProductionInventorySoapIn" />
+      <wsdl:output message="tns:AddProductionInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <wsdl:input message="tns:GetCurrentProductionQuantitySoapIn" />
+      <wsdl:output message="tns:GetCurrentProductionQuantitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <wsdl:input message="tns:RemoveIfZeroQtySoapIn" />
+      <wsdl:output message="tns:RemoveIfZeroQtySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <wsdl:input message="tns:AdjustProductionInventorySoapIn" />
+      <wsdl:output message="tns:AdjustProductionInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <wsdl:input message="tns:UpdateProductionInventorySoapIn" />
+      <wsdl:output message="tns:UpdateProductionInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testSoapIn" />
+      <wsdl:output message="tns:testSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service1HttpGet">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpGetIn" />
+      <wsdl:output message="tns:LoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <wsdl:input message="tns:GetItemIDCodeHttpGetIn" />
+      <wsdl:output message="tns:GetItemIDCodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <wsdl:input message="tns:GetItemDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetItemDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <wsdl:input message="tns:GetItemFullDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetItemFullDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <wsdl:input message="tns:HasInventoryHttpGetIn" />
+      <wsdl:output message="tns:HasInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <wsdl:input message="tns:HasDuplicateWarehouseInventoryHttpGetIn" />
+      <wsdl:output message="tns:HasDuplicateWarehouseInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <wsdl:input message="tns:GetMaterialsHttpGetIn" />
+      <wsdl:output message="tns:GetMaterialsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets current and total warehouse quantity of item</wsdl:documentation>
+      <wsdl:input message="tns:GetWarehouseInventoryHttpGetIn" />
+      <wsdl:output message="tns:GetWarehouseInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <wsdl:input message="tns:GetPlanQtyHttpGetIn" />
+      <wsdl:output message="tns:GetPlanQtyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <wsdl:input message="tns:AdjustWarehouseInventoryHttpGetIn" />
+      <wsdl:output message="tns:AdjustWarehouseInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <wsdl:input message="tns:UpdateWarehouseInventoryHttpGetIn" />
+      <wsdl:output message="tns:UpdateWarehouseInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <wsdl:input message="tns:IsProdRequestPartialHttpGetIn" />
+      <wsdl:output message="tns:IsProdRequestPartialHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets item qty based on material number</wsdl:documentation>
+      <wsdl:input message="tns:GetWarehouseMatLotQtyHttpGetIn" />
+      <wsdl:output message="tns:GetWarehouseMatLotQtyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates Production Request from PENDING to ENROUTE</wsdl:documentation>
+      <wsdl:input message="tns:UpdateWarehouseRequestHttpGetIn" />
+      <wsdl:output message="tns:UpdateWarehouseRequestHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <wsdl:input message="tns:AddProductionInventoryHttpGetIn" />
+      <wsdl:output message="tns:AddProductionInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <wsdl:input message="tns:GetCurrentProductionQuantityHttpGetIn" />
+      <wsdl:output message="tns:GetCurrentProductionQuantityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <wsdl:input message="tns:RemoveIfZeroQtyHttpGetIn" />
+      <wsdl:output message="tns:RemoveIfZeroQtyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <wsdl:input message="tns:AdjustProductionInventoryHttpGetIn" />
+      <wsdl:output message="tns:AdjustProductionInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <wsdl:input message="tns:UpdateProductionInventoryHttpGetIn" />
+      <wsdl:output message="tns:UpdateProductionInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testHttpGetIn" />
+      <wsdl:output message="tns:testHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service1HttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn" />
+      <wsdl:output message="tns:LoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <wsdl:input message="tns:GetItemIDCodeHttpPostIn" />
+      <wsdl:output message="tns:GetItemIDCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <wsdl:input message="tns:GetItemDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetItemDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <wsdl:input message="tns:GetItemFullDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetItemFullDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <wsdl:input message="tns:HasInventoryHttpPostIn" />
+      <wsdl:output message="tns:HasInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <wsdl:input message="tns:HasDuplicateWarehouseInventoryHttpPostIn" />
+      <wsdl:output message="tns:HasDuplicateWarehouseInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <wsdl:input message="tns:GetMaterialsHttpPostIn" />
+      <wsdl:output message="tns:GetMaterialsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets current and total warehouse quantity of item</wsdl:documentation>
+      <wsdl:input message="tns:GetWarehouseInventoryHttpPostIn" />
+      <wsdl:output message="tns:GetWarehouseInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <wsdl:input message="tns:GetPlanQtyHttpPostIn" />
+      <wsdl:output message="tns:GetPlanQtyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <wsdl:input message="tns:AdjustWarehouseInventoryHttpPostIn" />
+      <wsdl:output message="tns:AdjustWarehouseInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <wsdl:input message="tns:UpdateWarehouseInventoryHttpPostIn" />
+      <wsdl:output message="tns:UpdateWarehouseInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <wsdl:input message="tns:IsProdRequestPartialHttpPostIn" />
+      <wsdl:output message="tns:IsProdRequestPartialHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets item qty based on material number</wsdl:documentation>
+      <wsdl:input message="tns:GetWarehouseMatLotQtyHttpPostIn" />
+      <wsdl:output message="tns:GetWarehouseMatLotQtyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates Production Request from PENDING to ENROUTE</wsdl:documentation>
+      <wsdl:input message="tns:UpdateWarehouseRequestHttpPostIn" />
+      <wsdl:output message="tns:UpdateWarehouseRequestHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <wsdl:input message="tns:AddProductionInventoryHttpPostIn" />
+      <wsdl:output message="tns:AddProductionInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <wsdl:input message="tns:GetCurrentProductionQuantityHttpPostIn" />
+      <wsdl:output message="tns:GetCurrentProductionQuantityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <wsdl:input message="tns:RemoveIfZeroQtyHttpPostIn" />
+      <wsdl:output message="tns:RemoveIfZeroQtyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <wsdl:input message="tns:AdjustProductionInventoryHttpPostIn" />
+      <wsdl:output message="tns:AdjustProductionInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <wsdl:input message="tns:UpdateProductionInventoryHttpPostIn" />
+      <wsdl:output message="tns:UpdateProductionInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testHttpPostIn" />
+      <wsdl:output message="tns:testHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://cerp.com.ph/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <soap:operation soapAction="http://cerp.com.ph/GetItemIDCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <soap:operation soapAction="http://cerp.com.ph/GetItemDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <soap:operation soapAction="http://cerp.com.ph/GetItemFullDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <soap:operation soapAction="http://cerp.com.ph/HasInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <soap:operation soapAction="http://cerp.com.ph/HasDuplicateWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <soap:operation soapAction="http://cerp.com.ph/GetMaterials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <soap:operation soapAction="http://cerp.com.ph/GetWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <soap:operation soapAction="http://cerp.com.ph/GetPlanQty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <soap:operation soapAction="http://cerp.com.ph/AdjustWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <soap:operation soapAction="http://cerp.com.ph/UpdateWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <soap:operation soapAction="http://cerp.com.ph/IsProdRequestPartial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <soap:operation soapAction="http://cerp.com.ph/GetWarehouseMatLotQty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <soap:operation soapAction="http://cerp.com.ph/UpdateWarehouseRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <soap:operation soapAction="http://cerp.com.ph/AddProductionInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <soap:operation soapAction="http://cerp.com.ph/GetCurrentProductionQuantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <soap:operation soapAction="http://cerp.com.ph/RemoveIfZeroQty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <soap:operation soapAction="http://cerp.com.ph/AdjustProductionInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <soap:operation soapAction="http://cerp.com.ph/UpdateProductionInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap:operation soapAction="http://cerp.com.ph/test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://cerp.com.ph/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <soap12:operation soapAction="http://cerp.com.ph/GetItemIDCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <soap12:operation soapAction="http://cerp.com.ph/GetItemDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <soap12:operation soapAction="http://cerp.com.ph/GetItemFullDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/HasInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/HasDuplicateWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <soap12:operation soapAction="http://cerp.com.ph/GetMaterials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/GetWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <soap12:operation soapAction="http://cerp.com.ph/GetPlanQty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/AdjustWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/UpdateWarehouseInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <soap12:operation soapAction="http://cerp.com.ph/IsProdRequestPartial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <soap12:operation soapAction="http://cerp.com.ph/GetWarehouseMatLotQty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <soap12:operation soapAction="http://cerp.com.ph/UpdateWarehouseRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/AddProductionInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <soap12:operation soapAction="http://cerp.com.ph/GetCurrentProductionQuantity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <soap12:operation soapAction="http://cerp.com.ph/RemoveIfZeroQty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/AdjustProductionInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <soap12:operation soapAction="http://cerp.com.ph/UpdateProductionInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap12:operation soapAction="http://cerp.com.ph/test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1HttpGet" type="tns:Service1HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <http:operation location="/GetItemIDCode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <http:operation location="/GetItemDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <http:operation location="/GetItemFullDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <http:operation location="/HasInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <http:operation location="/HasDuplicateWarehouseInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <http:operation location="/GetMaterials" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <http:operation location="/GetWarehouseInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <http:operation location="/GetPlanQty" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <http:operation location="/AdjustWarehouseInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <http:operation location="/UpdateWarehouseInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <http:operation location="/IsProdRequestPartial" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <http:operation location="/GetWarehouseMatLotQty" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <http:operation location="/UpdateWarehouseRequest" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <http:operation location="/AddProductionInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <http:operation location="/GetCurrentProductionQuantity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <http:operation location="/RemoveIfZeroQty" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <http:operation location="/AdjustProductionInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <http:operation location="/UpdateProductionInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <http:operation location="/test" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1HttpPost" type="tns:Service1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemIDCode">
+      <http:operation location="/GetItemIDCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetails">
+      <http:operation location="/GetItemDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemFullDetails">
+      <http:operation location="/GetItemFullDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasInventory">
+      <http:operation location="/HasInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasDuplicateWarehouseInventory">
+      <http:operation location="/HasDuplicateWarehouseInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterials">
+      <http:operation location="/GetMaterials" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseInventory">
+      <http:operation location="/GetWarehouseInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanQty">
+      <http:operation location="/GetPlanQty" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWarehouseInventory">
+      <http:operation location="/AdjustWarehouseInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseInventory">
+      <http:operation location="/UpdateWarehouseInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsProdRequestPartial">
+      <http:operation location="/IsProdRequestPartial" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWarehouseMatLotQty">
+      <http:operation location="/GetWarehouseMatLotQty" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWarehouseRequest">
+      <http:operation location="/UpdateWarehouseRequest" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductionInventory">
+      <http:operation location="/AddProductionInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentProductionQuantity">
+      <http:operation location="/GetCurrentProductionQuantity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIfZeroQty">
+      <http:operation location="/RemoveIfZeroQty" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustProductionInventory">
+      <http:operation location="/AdjustProductionInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductionInventory">
+      <http:operation location="/UpdateProductionInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <http:operation location="/test" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://localhost/cerpws/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://localhost/cerpws/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1HttpGet" binding="tns:Service1HttpGet">
+      <http:address location="http://localhost/cerpws/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1HttpPost" binding="tns:Service1HttpPost">
+      <http:address location="http://localhost/cerpws/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
